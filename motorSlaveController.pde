@@ -51,7 +51,13 @@ The idea is the master uC will send speed commands, and the motorcontroller
     will respond with sensor data. If no data is recieved for 2 seconds, all stop is given
 
 
+Extend this command structure to allow reconfiguration over serial
+
+Allow configuration / operation over I2C
+
 */
+
+
 #define LEFT_ENC_DIR 7 //  PortD 10000000
 #define RIGHT_ENC_DIR 8 //  PortB 00000001
 
@@ -132,7 +138,9 @@ void setup(void) {
   pinMode(LEFT_MOTOR_DIR, OUTPUT);
   pinMode(RIGHT_MOTOR_DIR, OUTPUT);
 
+  //PIN 2 Encoder Left Pulse Pin
   attachInterrupt(0, countpulse_l, RISING); //pin 2   encoder interupts
+  //PIN 3 Encoder Right Pulse Pin
   attachInterrupt(1, countpulse_r, RISING); //pin3
  
   //Start up the serial port
